@@ -12,4 +12,19 @@ public class Company {
     @Column(name = "company_url", nullable = false)
     private String companyUrl;
 
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
+    public String getCompanyUrl() {
+        return companyUrl;
+    }
+
+    public void setCompanyUrl(String companyUrl) {
+        this.companyUrl = companyUrl;
+    }
 }

@@ -23,5 +23,45 @@ public class Article {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
     private List<Comment> commentList;
+
+    public Long getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
 }
 
