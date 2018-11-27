@@ -1,9 +1,14 @@
 package com.example.demo.entity;
 
+import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,51 +22,18 @@ public class Article {
     @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private Date time;
+
+    @Column
+    private String pic;
+
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_account")
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
     private List<Comment> commentList;
 
-    public Long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Comment> getCommentList() {
-        return commentList;
-    }
-
-    public void setCommentList(List<Comment> commentList) {
-        this.commentList = commentList;
-    }
 }
 

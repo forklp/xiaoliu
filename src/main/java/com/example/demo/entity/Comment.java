@@ -1,8 +1,12 @@
 package com.example.demo.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
+@Data
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +16,12 @@ public class Comment {
     @Column(name = "comment_content", nullable = false)
     private String commentContent;
 
+    @Column(nullable = false)
+    private Date time;
+
+    @Column
+    private String pic;
+
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "article_id")
     private Article article;
@@ -20,35 +30,5 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Long getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(Long commentId) {
-        this.commentId = commentId;
-    }
-
-    public String getCommentContent() {
-        return commentContent;
-    }
-
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent;
-    }
-
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
+

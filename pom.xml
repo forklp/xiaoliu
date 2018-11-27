@@ -25,6 +25,12 @@
 	</properties>
 
 	<dependencies>
+		<!--自动生成getter setter-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.6</version>
+		</dependency>
 		<!--缓存配置-->
 		<dependency>
 			<groupId>org.springframework.session</groupId>
