@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Company {
+public class Company4 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "company_id", nullable = false)
@@ -14,4 +14,10 @@ public class Company {
 
     @Column(name = "company_url", nullable = false)
     private String companyUrl;
+
+    @Column(nullable = false)
+    private String imageUrl;
+
+    @Column(nullable = false)
+    private String companyTitle;
 }
