@@ -19,6 +19,13 @@ public class User {
     @Column(name = "user_password", nullable = false, length = 20)
     private String userPassword;
 
+    @Column(name = "user_code", nullable = false)
+    private String userCode;
+
+    //积分
+    @Column(name = "user_point",nullable = false)
+    private int userPoint;
+
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 //    private List<Article> articleList;
 //
