@@ -32,4 +32,12 @@ public class User {
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 //    private List<Comment> commentList;
 
+
+//    public String getUserPassword() {
+//        return userPassword;
+//    }
+//
+//    public void setUserPassword(String userPassword) {
+//        this.userPassword = userPassword;
+//    }
 }

@@ -35,5 +35,12 @@ public class Article {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
     private List<Comment> commentList;
 
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }
 
