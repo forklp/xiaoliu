@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,6 +20,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "update User set userPoint = userPoint + 1 where userCode = ?1")
     void addUserPoint(String userCode);
 
+    //减少用户积分
+    @Modifying
+    @Transactional
+    @Query(value = "update User set userPoint = userPoint - ?1 where userAccount = ?2")
+    void reduceUserPoint(int point,String userAccount);
 
     //注意这里用实体变量的名称，jpa的所有操作都是操作java实体
     //如果是返回User的话，会缺少字段无法返回

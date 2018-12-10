@@ -28,6 +28,7 @@ public class Article {
     @Column
     private String pic;
 
+
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "user_account")
     private User user;
