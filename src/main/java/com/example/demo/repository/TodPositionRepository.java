@@ -1,0 +1,1 @@
+package com.example.demo.repository;import com.example.demo.entity.TodPosition;import org.springframework.data.jpa.repository.JpaRepository;public interface TodPositionRepository extends JpaRepository<TodPosition,Long> {    TodPosition findByUserPhone(String phone);}
