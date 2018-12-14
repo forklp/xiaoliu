@@ -26,6 +26,10 @@ public class User {
     @Column(name = "user_point",nullable = false)
     private int userPoint;
 
+    private String imageUrl; //头像
+
+    private String nickName;
+
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 //    private List<Article> articleList;
 //
