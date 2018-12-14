@@ -12,7 +12,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUserAccountAndUserPassword(String account,String password);
 
-
     //增加用户的积分
     //增加操作必须加这个不然可能会报错
     @Modifying
