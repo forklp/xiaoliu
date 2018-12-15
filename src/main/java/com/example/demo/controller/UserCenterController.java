@@ -29,7 +29,6 @@ public class UserCenterController {
         user.setImageUrl(user1.getImageUrl());
         user.setNickName(user1.getNickName());
         user.setUserPoint(user1.getUserPoint());
-
         return user;
     }
 
@@ -41,7 +40,7 @@ public class UserCenterController {
 
         User user = userRepository.findByUserAccount(account);
         user.setUserPassword("null");
-
+    
         return user;
     }
 
@@ -70,5 +69,12 @@ public class UserCenterController {
         user1.setUserCode(user.getUserCode());
 
         return user1;
+    }
+
+    @GetMapping("/logout")
+    public Object logout(HttpServletRequest request) {
+        String token = request.getHeader("token");
+        redisTemplate.delete(token);
+        return 1;
     }
 }
