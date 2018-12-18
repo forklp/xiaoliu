@@ -42,10 +42,12 @@ public class PositionController {
        if(tomPositionRepository.findByUser1PhoneOrUser2PhoneOrUser3Phone(phone,phone,phone)!=null)return "您已经预约座位";
        TomPosition tomPosition = tomPositionRepository.getOne(id);
        String tem = "";
+       int num = time.length();
        for(int i = 0;i<time.length();i++){
            switch (time.charAt(i)){
                case '0':
                    if(tomPosition.isMorning()){
+		    num--;
                     tem += " 该位置上午已被预约";
                     break;
                    }
@@ -55,6 +57,7 @@ public class PositionController {
                    break;
                case '1':
                     if(tomPosition.isAfternoon()){
+		    num--;	
                     tem += " 该位置下午已被预约";
                     break;
                     }
@@ -64,6 +67,7 @@ public class PositionController {
                    break;
                case '2':
                     if(tomPosition.isNight()){
+		    num--;
                     tem += " 该位置晚上已被预约";
                     break;
                     }
@@ -74,6 +78,8 @@ public class PositionController {
            }
        }
        tomPositionRepository.save(tomPosition);
+       if(tem.equals(""))return "预约成功";
+       if(num == 0)return "预约失败,您选的时间段都无空闲";
        return "预约成功"+'('+tem+')';
     }
 
