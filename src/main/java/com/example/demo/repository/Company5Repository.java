@@ -1,6 +1,8 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Company5;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;
@@ -11,4 +13,5 @@ public interface Company5Repository extends JpaRepository<Company5, Long> {
     List<Company5> findByProjectType(String type);
     List<Company5> findByProjectTimeAfter(Date time);
     List<Company5> findByProjectLengthLessThanEqual(int length);
+    Page<Company5> findByProjectType(String type, Pageable pageable);
 }

@@ -31,32 +31,38 @@ public class Company1Controller {
     @Autowired
     Company5Repository company5Repository;
 
+
+    //优质机构
     @PostMapping("/1")
     public Object getCompany1(@RequestParam int page, @RequestParam int size) {
         Pageable pageable = new PageRequest(page, size, Sort.Direction.ASC, "companyId");
         return  company1Repository.findAll(pageable).getContent();
     }
 
+    //名师讲堂
     @PostMapping("/2")
     public Object getCompany2(@RequestParam int page, @RequestParam int size) {
         Pageable pageable = new PageRequest(page, size, Sort.Direction.ASC, "companyId");
         return  company2Repository.findAll(pageable).getContent();
     }
 
+    //成功案例
     @PostMapping("/3")
     public Object getCompany3(@RequestParam int page, @RequestParam int size) {
         Pageable pageable = new PageRequest(page, size, Sort.Direction.ASC, "companyId");
         return  company3Repository.findAll(pageable).getContent();
     }
 
+    //作品展示
     @PostMapping("/4")
     public Object getCompany4(@RequestParam int page, @RequestParam int size) {
         Pageable pageable = new PageRequest(page, size, Sort.Direction.ASC, "companyId");
         return  company4Repository.findAll(pageable).getContent();
     }
 
-    @PostMapping("/5")
-    public Object getCompany5(@RequestParam String country, @RequestParam String type, @RequestParam int length, @RequestParam String time) {
+    //提升
+    @PostMapping("/search")
+    public Object getCompany5(@RequestParam String country, @RequestParam String type, @RequestParam int length, @RequestParam String time, @RequestParam int page, @RequestParam int size) {
         List<Company5> list1 = new ArrayList<>();
         List<Company5> list2 = new ArrayList<>();
         List<Company5> list3 = new ArrayList<>();
@@ -81,8 +87,14 @@ public class Company1Controller {
             finalList.retainAll(list4);
         }
 
-        return finalList;
+        ArrayList returnList = new ArrayList(finalList.subList(page*size, page*size+size-1));
+        return returnList;
+    }
 
+    @PostMapping("/promote")
+    public Object getPromote(@RequestParam String type, @RequestParam int page, @RequestParam int size) {
+        Pageable pageable = new PageRequest(page, size, Sort.Direction.ASC, "companyId");
+        return  company5Repository.findByProjectType(type, pageable).getContent();
     }
 
 }
