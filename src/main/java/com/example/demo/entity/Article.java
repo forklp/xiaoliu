@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -28,6 +27,12 @@ public class Article {
     @Column
     private String pic;
 
+    //一共三种种类
+    @Column
+    private String type;
+
+    @Column
+    private String url;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "user_account")
@@ -35,13 +40,5 @@ public class Article {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
     private List<Comment> commentList;
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 }
 
