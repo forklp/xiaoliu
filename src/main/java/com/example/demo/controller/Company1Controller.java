@@ -87,7 +87,7 @@ public class Company1Controller {
             finalList.retainAll(list4);
         }
 
-        ArrayList returnList = new ArrayList(finalList.subList(page*size, page*size+size-1));
+        ArrayList returnList = new ArrayList(finalList.subList(page*size, page*size+size));
         return returnList;
     }
 
